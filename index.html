@@ -5,7 +5,9 @@
 	</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="game.js"></script>
+	<script src="highscore.js"></script>
 	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
 	<div style="text-align:center">
@@ -13,10 +15,30 @@
 			2048 Game
 		</h1>
 	</div>
-	<hr style="margin-top:30px;margin-bottom:20px;width:66%">
+	<hr style="margin-top:30px;margin-bottom:0px;width:66%">
+	<div id="scorediv" align="center">
+		<table id='scoretable'>
+			<tr id='scorerow'>
+				<td class='scoretitle'>
+					<b>Score:</b>
+					<span id="score">0</span>
+				</td>
+				<td class="scoremidbreak">
+				</td>
+				<td class="scoretitle" style="text-align:right">
+					<b>High Score:</b>
+					<span id="highscore">0</span>
+				</td>
+			</tr>
+		</table>
+	</div>
 	<div id="game" align="center">
 
 	</div>
-
+	<div id="newgame">
+		<b><a id="newgamelink" href="">New Game</a></b>
+	</div>
+	<div style="display:none" id="highscores">
+	</div>
 </body>
 </html>

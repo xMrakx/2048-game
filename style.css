@@ -1,13 +1,47 @@
-tr {
+#gametable {
+	border: 1px solid black;
+}
+
+.gamecell {
+	border: 1px solid black;
+	width:100px;
+	text-align:center;
+	font-size:36px;
+}
+
+#scorediv{
+	padding-top:0px;
+}
+
+#scoretable{
+	width:425px;
+}
+
+.gamerow {
 	height:100px;
 }
 
-td {
-	width:100px;
-	text-align:center;
-	font-size: 36px;
+#scorerow{
+	height:40px;
+	width:100%;
 }
 
-table, td {
-	border: 1px solid black;
+.scoretitle{
+	width:40%;
+	font-size:20px;
 }
+
+.scoremidbreak {
+	width:20%;
+}
+
+#newgame{
+	padding-top:20px;
+	text-align:center;
+}
+#newgamelink {
+	font-size:20px;
+	color:inherit;
+	text-decoration:none;
+}
+

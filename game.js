@@ -1,11 +1,13 @@
 var game = new Array(4);
+var adjusted = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var score = 0;
 
 $(document).ready(function(){
 	$("#game").append("<table id='gametable'>");
 	for(var i = 0; i < 4; i++){
-		$("#game table").append("<tr>");
+		$("#game table").append("<tr class='gamerow'>");
 		for(var j = 0; j < 4; j++){
-			$("#game tr").last().append("<td id='" + i + "-" + j + "'>")
+			$("#game tr").last().append("<td class='gamecell' id='" + i + "-" + j + "'>")
 		}
 	}
 	beginGame();
@@ -104,6 +106,7 @@ function gameloop(){
 		}else if(e.keyCode == 40){
 			moveDown();
 		}
+		adjusted = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 	});
 }
 
@@ -208,13 +211,21 @@ function moveDown(){
 }
 
 function checkCollision(num, orow, ocol, row, col){
-	if(num == game[row][col]){
-		game[orow][ocol] = 0;
-		game[row][col] = 2 * num;
-		return true;
+	if(adjusted[row*4+col] == 0){
+		if(num == game[row][col]){
+			game[orow][ocol] = 0;
+			game[row][col] = 2 * num;
+			score += 2 * num;
+			$("#score").html(score);
+			adjusted[row*4+col] = 1;
+			return true;
+		}else{
+			return false;
+		}
 	}else{
 		return false;
 	}
+	
 }
 
 function addBlock(didmove){
@@ -227,7 +238,7 @@ function addBlock(didmove){
 		}
 	}
 	if(open.length == 0){
-		console.log("Game over");
+		recordHighScore(score);
 	}else{
 		if(didmove){
 			var rand = Math.floor(Math.random() * open.length);
