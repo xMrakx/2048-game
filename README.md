@@ -7,15 +7,15 @@ This is a simple web-based version of the popular 2D sliding tile app, <a href="
 To play 2048 on your machine, you must have Node.js installed. If you do not, visit the <a href="https://nodejs.org/en/download/">NodeJS website</a> to download.
 
 Then clone the repo to your computer using the command terminal:
-'''
+```
 git clone https://github.com/bradymadden97/2048-game
-'''
+```
 Now open a local Node server on your machine with the command:
-'''
+```
 node server.js
-'''
+```
 Open a web browser and enter the following into the navigation bar:
-'''
+```
 localhost:8080
-'''
+```
 Good luck and enjoy!
