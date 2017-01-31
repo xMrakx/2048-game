@@ -217,6 +217,7 @@ function checkCollision(num, orow, ocol, row, col){
 			game[row][col] = 2 * num;
 			score += 2 * num;
 			$("#score").html(score);
+			checkHighScore(score);
 			adjusted[row*4+col] = 1;
 			return true;
 		}else{
@@ -239,6 +240,7 @@ function addBlock(didmove){
 	}
 	if(open.length == 0){
 		recordHighScore(score);
+
 	}else{
 		if(didmove){
 			var rand = Math.floor(Math.random() * open.length);
