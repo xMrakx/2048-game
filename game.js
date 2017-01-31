@@ -11,7 +11,20 @@ $(document).ready(function(){
 		}
 	}
 	beginGame();
-	updateColors();
+	updateColors(-1);
+	$("#cover").fadeOut(6500);
+	$("#covertext").delay(750).animate({
+		fontSize: '32px',
+		top: '-=252px',
+		left: '-=47px'
+	},3500);
+	$("#gametitle").delay(4500).animate({
+		opacity: '1',
+	},1000);
+	$("#scorediv").delay(5000).animate({
+		opacity: '1',
+	},500);
+	$("#scorediv").effect("bounce", {times: 3}, "slow");
 	gameloop();
 });
 
@@ -38,59 +51,79 @@ function beginGame(){
 	game[row2][col2] = 2;
 }
 
-function updateColors(){
+function updateColors(newindex){
 	for(var i = 0; i < 4; i++){
 		for(var j = 0; j < 4; j++){
-			switch(game[i][j]){
-				case 2048:
-					$("#"+i+"-"+j).html("2048");
-					$("#"+i+"-"+j).css("background-color", "DeepSkyBlue");
-					break;
-				case 1024:
-					$("#"+i+"-"+j).html("1024");
-					$("#"+i+"-"+j).css("background-color", "Aquamarine");
-					break;
-				case 512:
-					$("#"+i+"-"+j).html("512");
-					$("#"+i+"-"+j).css("background-color", "PaleGreen");
-					break;
-				case 256:
-					$("#"+i+"-"+j).html("256");
-					$("#"+i+"-"+j).css("background-color", "Gold");
-					break;
-				case 128:
-					$("#"+i+"-"+j).html("128");
-					$("#"+i+"-"+j).css("background-color", "LemonChiffon");
-					break;
-				case 64:
-					$("#"+i+"-"+j).html("64");
-					$("#"+i+"-"+j).css("background-color", "Salmon");
-					break;
-				case 32:
-					$("#"+i+"-"+j).html("32");
-					$("#"+i+"-"+j).css("background-color", "OrangeRed");
-					break;
-				case 16:
-					$("#"+i+"-"+j).html("16");
-					$("#"+i+"-"+j).css("background-color", "Tomato");
-					break;
-				case 8:
-					$("#"+i+"-"+j).html("8");
-					$("#"+i+"-"+j).css("background-color", "SandyBrown");
-					break;
-				case 4:
-					$("#"+i+"-"+j).html("4");
-					$("#"+i+"-"+j).css("background-color", "Tan");
-					break;
-				case 2:
-					$("#"+i+"-"+j).html("2");
-					$("#"+i+"-"+j).css("background-color", "LightGrey");
-					break;
-				default:
-					$("#"+i+"-"+j).html("");
-					$("#"+i+"-"+j).css("background-color", "White");
-					break;
+			if(4*i+j != newindex){
+				switch(game[i][j]){
+					case 2048:
+						$("#"+i+"-"+j).html("2048");
+						$("#"+i+"-"+j).css("background-color", "DeepSkyBlue");
+						break;
+					case 1024:
+						$("#"+i+"-"+j).html("1024");
+						$("#"+i+"-"+j).css("background-color", "Aquamarine");
+						break;
+					case 512:
+						$("#"+i+"-"+j).html("512");
+						$("#"+i+"-"+j).css("background-color", "PaleGreen");
+						break;
+					case 256:
+						$("#"+i+"-"+j).html("256");
+						$("#"+i+"-"+j).css("background-color", "Gold");
+						break;
+					case 128:
+						$("#"+i+"-"+j).html("128");
+						$("#"+i+"-"+j).css("background-color", "LemonChiffon");
+						break;
+					case 64:
+						$("#"+i+"-"+j).html("64");
+						$("#"+i+"-"+j).css("background-color", "Salmon");
+						break;
+					case 32:
+						$("#"+i+"-"+j).html("32");
+						$("#"+i+"-"+j).css("background-color", "OrangeRed");
+						break;
+					case 16:
+						$("#"+i+"-"+j).html("16");
+						$("#"+i+"-"+j).css("background-color", "Tomato");
+						break;
+					case 8:
+						$("#"+i+"-"+j).html("8");
+						$("#"+i+"-"+j).css("background-color", "SandyBrown");
+						break;
+					case 4:
+						$("#"+i+"-"+j).html("4");
+						$("#"+i+"-"+j).css("background-color", "Tan");
+						break;
+					case 2:
+						$("#"+i+"-"+j).html("2");
+						$("#"+i+"-"+j).css("background-color", "LightGrey");
+						break;
+					default:
+						$("#"+i+"-"+j).html("");
+						$("#"+i+"-"+j).css("background-color", "White");
+						break;
+				}
 			}
+		}
+	}
+	if(newindex != -1){
+		var r = Math.floor(newindex/4);
+		var c = newindex%4;
+		switch(game[r][c]){
+			case 4:
+				$("#"+r+"-"+c).html("4");
+				$("#"+r+"-"+c).animate({
+					backgroundColor: "#D2B48C"
+				},400);
+				break;
+			case 2:
+				$("#"+r+"-"+c).html("2");
+				$("#"+r+"-"+c).animate({
+					backgroundColor: "#D3D3D3"
+				},400);
+				break;
 		}
 	}
 }
@@ -131,7 +164,7 @@ function moveLeft(){
 			}
 		}
 	}
-	updateColors();
+	updateColors(-1);
 	addBlock(didmove);
 }
 
@@ -156,7 +189,7 @@ function moveRight(){
 			}
 		}
 	}
-	updateColors();
+	updateColors(-1);
 	addBlock(didmove);
 }
 
@@ -181,7 +214,7 @@ function moveUp(){
 			}
 		}
 	}
-	updateColors();
+	updateColors(-1);
 	addBlock(didmove);
 }
 
@@ -206,7 +239,7 @@ function moveDown(){
 			}
 		}
 	}
-	updateColors();
+	updateColors(-1);
 	addBlock(didmove);
 }
 
@@ -252,7 +285,7 @@ function addBlock(didmove){
 			}else{
 				game[r][c] = 2;
 			}
-			updateColors();
+			updateColors(r*4+c);
 		}
 	}
 }
