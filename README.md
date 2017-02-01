@@ -21,6 +21,7 @@ Open a web browser and enter the following into the navigation bar:
 localhost:8080
 ```
 
+<br>
 ###Playing without Highscore Tracking
 
 To play locally without highscore tracking, first clone the repo to your computer:
@@ -28,5 +29,7 @@ To play locally without highscore tracking, first clone the repo to your compute
 git clone https://github.com/bradymadden97/2048-game
 ```
 Open a web browser and navigate to the <b>index.html</b> page in your filesystem
+
+<br>
 
 Good luck and enjoy!
