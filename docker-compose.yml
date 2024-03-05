@@ -1,0 +1,14 @@
+version: "3"
+name: games
+services:
+  game-0:
+    container_name: game-0
+    build: .
+    image: game-2048
+    ports:
+    - 2048:8080
+  game-1:
+    container_name: game-1
+    image: game-2048
+    ports:
+    - 8402:8080
